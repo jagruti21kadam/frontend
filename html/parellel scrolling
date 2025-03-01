@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling Effect</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .parallax {
+            position: relative;
+            height: 100vh;
+            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center/cover;
+        }
+
+        .layer {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 3em;
+            color: white;
+        }
+
+        .layer1 { top: 20%; }
+        .layer2 { top: 40%; }
+        .layer3 { top: 60%; }
+
+        .content {
+            height: 100vh;
+            background: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax" id="parallax">
+        <div class="layer layer1">Layer 1</div>
+        <div class="layer layer2">Layer 2</div>
+        <div class="layer layer3">Layer 3</div>
+    </div>
+    <div class="content">Scroll Down for More Content</div>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            let scrollPosition = window.scrollY;
+            document.querySelector('.parallax').style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            document.querySelector('.layer1').style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            document.querySelector('.layer2').style.transform = `translateY(${scrollPosition * 0.5}px)`;
+            document.querySelector('.layer3').style.transform = `translateY(${scrollPosition * 0.7}px)`;
+        });
+    </script>
+</body>
+</html>
