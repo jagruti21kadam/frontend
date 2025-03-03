@@ -1,0 +1,39 @@
+function IsEmail(target: any, propertyKey: string) {
+    let value: string;
+
+    const emailRegex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+    
+    Object.defineProperty(target, propertyKey, {
+        get: () => value,
+        set: (newValue: string) => {
+            if (!emailRegex.test(newValue)) {
+                throw new Error(`Invalid email address: ${newValue}`);
+            }
+            value = newValue;
+        },
+        enumerable: true,
+        configurable: true
+    });
+}
+
+class User {
+    @IsEmail
+    email: string;
+
+    constructor(email: string) {
+        this.email = email;
+    }
+}
+
+try {
+    const user = new User("invalid-email"); // Throws an error
+} catch (error) {
+    console.error(error.message);
+}
+
+try {
+    const validUser = new User("test@example.com"); // Works fine
+    console.log("Valid email:", validUser.email);
+} catch (error) {
+    console.error(error.message);
+}
