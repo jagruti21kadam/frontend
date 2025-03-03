@@ -1,0 +1,44 @@
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?nature,water') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+        padding: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+.section-content {
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .section-content {
+        text-align: center;
+    }
+}
