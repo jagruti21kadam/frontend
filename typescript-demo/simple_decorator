@@ -1,0 +1,16 @@
+function LogOnInstantiation<T extends { new (...args: any[]): {} }>(constructor: T) {
+    return class extends constructor {
+        constructor(...args: any[]) {
+            super(...args);
+            console.log(`An instance of ${constructor.name} was created.`);
+        }
+    };
+}
+
+@LogOnInstantiation
+class User {
+    constructor(public name: string, public age: number) {}
+}
+
+const user1 = new User("Alice", 25);
+const user2 = new User("Bob", 30);
